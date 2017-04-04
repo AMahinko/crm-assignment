@@ -38,7 +38,6 @@ class Contact
   # and return the contact who has that id
   def self.find(query)
     @@contacts_list.each do |contact|
-      puts contact
       if contact.id == query
         return contact
       end
@@ -138,7 +137,7 @@ class Contact
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-
+    @@contacts_list.delete(Contact.find(@id))
   end
 
   # Feel free to add other methods here, if you need them.
