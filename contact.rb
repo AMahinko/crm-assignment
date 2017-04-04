@@ -72,39 +72,49 @@ class Contact
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
   def self.find_by(target, query)
-    @@contacts_list.each do |contact|
-      if target=="first_name"
-        if query == contact.first_name
-          return contact
-        end
 
-      elsif target=="last_name"
-        if query == contact.last_name
-          return contact
-        end
 
-      elsif target=="email"
-        if query == contact.email
-          return contact
-        end
+    @@contacts_list.find do |contact|                                    #<<<final refactor
+      contact.send(target) == query
+    end
 
-      elsif target=="note"
-        if query == contact.note
-          return contact
-        end
-
-      else
-        puts "NOT FOUND"
-        return nil
-      end
-
-      end
+    # @@contacts_list.each do |contact|                                             <<<Refactor one
+    #   case target
+    #   when "first_name"
+    #     return contact if query == contact.first_name
+    #   when "last_name"
+    #     return contact if query == contact.last_name
+    #   when "email"
+    #     return contact if query == contact.email
+    #   when "note"
+    #     return contact query == contact.note
+    #   end
+    # end
   end
-
-  # This method should delete all of the contacts
-  def self.delete_all
-
-  end
+      # if target=="first_name"                                     <-----Attempt one
+      #   if query == contact.first_name
+      #     return contact
+      #   end
+      #
+      # elsif target=="last_name"
+      #   if query == contact.last_name
+      #     return contact
+      #   end
+      #
+      # elsif target=="email"
+      #   if query == contact.email
+      #     return contact
+      #   end
+      #
+      # elsif target=="note"
+      #   if query == contact.note
+      #     return contact
+      #   end
+      #
+      # else
+      #   puts "NOT FOUND"
+      #   return nil
+      # end
 
   def full_name
 
@@ -119,3 +129,6 @@ class Contact
   # Feel free to add other methods here, if you need them.
 
 end
+
+Contact.create(1,1,1,1)
+Contact.create(2,2,2,2)
