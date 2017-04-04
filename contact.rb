@@ -51,20 +51,35 @@ class Contact
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
   def update(target, value)
-    if target=="first_name"
+    case
+    when "first_name"
       @first_name = value
       return @first_name
-    elsif target == "last_name"
+    when "last_name"
       @last_name = value
       return @last_name
-    elsif target == "email"
+    when "email"
       @email = value
       return @email
-    elsif target == "note"
+    when "note"
       @note = value
       return @note
     else puts "INPUT ERROR, INVALID TARGET"
     end
+  #   if target=="first_name"
+  #     @first_name = value
+  #     return @first_name
+  #   elsif target == "last_name"
+  #     @last_name = value
+  #     return @last_name
+  #   elsif target == "email"                                  <<<< MAKE SURE TO CHANGE M's back to N's if you ever decide to uncomment this.
+  #     @email = value
+  #     return @email
+  #   elsif target == "note"
+  #     @mote = value
+  #     return @mote
+  #   else puts "INPUT ERROR, INVALID TARGET"
+  #   end
   end
 
   # This method should work similarly to the find method above
@@ -117,7 +132,7 @@ class Contact
       # end
 
   def full_name
-
+    return "#{@first_name} #{@last_name}"
   end
 
   # This method should delete the contact
@@ -130,5 +145,5 @@ class Contact
 
 end
 
-Contact.create(1,1,1,1)
-Contact.create(2,2,2,2)
+x = Contact.create(1,1,1,1)
+y = Contact.create(2,2,2,2)
