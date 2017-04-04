@@ -6,7 +6,8 @@ class Contact
   # This method should initialize the contact's attributes
   def initialize (first_name, last_name, email, note)
 
-    @id = nil
+    @id = @@id
+    @@id += 1
     @first_name = first_name
     @last_name = last_name
     @email = email
@@ -19,20 +20,29 @@ class Contact
 
   # This method should call the initializer,
   # store the newly created contact, and then return it
-  def self.create
+  def self.create(first_name, last_name, email, note)
 
-
+    new_contact = Contact.new(first_name, last_name, email, note)
+    @@contacts_list << new_contact
+    return new_contact
 
   end
 
   # This method should return all of the existing contacts
   def self.all
+    return @@contacts_list
 
   end
 
   # This method should accept an id as an argument
   # and return the contact who has that id
-  def self.find
+  def self.find(query)
+    @@contacts_list.each do |contact|
+      puts contact
+      if contact.id == query
+        return contact
+      end
+    end
 
   end
 
@@ -40,8 +50,21 @@ class Contact
   # 1. which of the contact's attributes you want to update
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
-  def update
-
+  def update(target, value)
+    if target=="first_name"
+      @first_name = value
+      return @first_name
+    elsif target == "last_name"
+      @last_name = value
+      return @last_name
+    elsif target == "email"
+      @email = value
+      return @email
+    elsif target == "note"
+      @note = value
+      return @note 
+    else puts "INPUT ERROR, INVALID TARGET"
+    end
   end
 
   # This method should work similarly to the find method above
