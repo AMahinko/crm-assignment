@@ -62,7 +62,7 @@ class Contact
       return @email
     elsif target == "note"
       @note = value
-      return @note 
+      return @note
     else puts "INPUT ERROR, INVALID TARGET"
     end
   end
@@ -71,8 +71,34 @@ class Contact
   # but it should allow you to search for a contact using attributes other than id
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
-  def self.find_by
+  def self.find_by(target, query)
+    @@contacts_list.each do |contact|
+      if target=="first_name"
+        if query == contact.first_name
+          return contact
+        end
 
+      elsif target=="last_name"
+        if query == contact.last_name
+          return contact
+        end
+
+      elsif target=="email"
+        if query == contact.email
+          return contact
+        end
+
+      elsif target=="note"
+        if query == contact.note
+          return contact
+        end
+
+      else
+        puts "NOT FOUND"
+        return nil
+      end
+
+      end
   end
 
   # This method should delete all of the contacts
