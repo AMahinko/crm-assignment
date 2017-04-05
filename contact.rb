@@ -133,16 +133,11 @@ class Contact
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-    Contact.all.delete(Contact.find(@id))
+    Contact.all.delete(self)
   end
 
   def self.delete_all
-    id_counter = 1
-    while Contact.all[0] != nil do
-      target = Contact.find(id_counter)
-      target.delete
-      id_counter += 1
-    end
+    @@contacts_list = []
   end
 
   # Feel free to add other methods here, if you need them.
