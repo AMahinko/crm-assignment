@@ -59,7 +59,7 @@ class TestContact < Minitest::Test
   end
 
   def test_delete
-    @contact.delete
+    @contact.deleter
 
     expected_value = []
     actual_value = Contact.all
