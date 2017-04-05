@@ -135,7 +135,7 @@ class Contact
 
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
-  def deleter
+  def delete
     @@contacts_list.delete(Contact.find(@id))
   end
 
@@ -143,7 +143,7 @@ class Contact
     id_counter = 1
     while Contact.all[0] != nil do
       target = Contact.find(id_counter)
-      target.deleter
+      target.delete
       id_counter += 1
     end
   end
