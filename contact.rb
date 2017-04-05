@@ -4,14 +4,14 @@ class Contact
   @@id = 1
 
   # This method should initialize the contact's attributes
-  def initialize (first_name, last_name, email, note)
+  def initialize(first_name, last_name, email, note)
 
     @id = @@id
     @@id += 1
-    @first_name = first_name
-    @last_name = last_name
-    @email = email
-    @note = note
+    @first_name = first_name.to_s
+    @last_name = last_name.to_s
+    @email = email.to_s
+    @note = note.to_s
 
   end
 
@@ -136,7 +136,7 @@ class Contact
 
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
-  def delete
+  def deleter
     @@contacts_list.delete(Contact.find(@id))
   end
 
