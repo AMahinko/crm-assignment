@@ -2,6 +2,7 @@ class Contact
 
   @@contacts_list = []
   @@id = 1
+  @@test_contact = nil
 
   # This method should initialize the contact's attributes
   def initialize(first_name, last_name, email, note)
@@ -49,19 +50,15 @@ class Contact
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
   def update(target, value)
-    case
-    when "first_name"
-      @first_name = value
-      return @first_name
-    when "last_name"
-      @last_name = value
-      return @last_name
-    when "email"
-      @email = value
-      return @email
-    when "note"
-      @note = value
-      return @note
+    case target
+    when 'first_name'
+      return @first_name = value
+    when 'last_name'
+      return @last_name = value
+    when 'email'
+      return @email = value
+    when 'note'
+      return @note = value
     else puts "INPUT ERROR, INVALID TARGET"
     end
   #   if target=="first_name"
@@ -136,7 +133,7 @@ class Contact
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-    @@contacts_list.delete(Contact.find(@id))
+    Contact.all.delete(Contact.find(@id))
   end
 
   def self.delete_all
@@ -149,8 +146,11 @@ class Contact
   end
 
   # Feel free to add other methods here, if you need them.
+def self.tester
+  @@test_contact = Contact.create('Grace', 'Hopper', 'grace@hopper.com', 'computer scientist')
+end
 
 end
 
-x = Contact.create(1,1,1,1)
-y = Contact.create(2,2,2,2)
+# x = Contact.create(1,1,1,1)
+# y = Contact.create(2,2,2,2)
