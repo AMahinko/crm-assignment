@@ -3,6 +3,7 @@ require "./contact.rb"
 class CRM < Contact
 
   def initialize
+    @active = true
 
   end
 
@@ -11,7 +12,7 @@ class CRM < Contact
   # end
 
   def main_menu
-    while true
+    while @active == true
       print_main_menu
       user_selection=gets.to_i
       call_option(user_selection)
@@ -35,6 +36,7 @@ class CRM < Contact
       when 3 then delete_contact
       when 4 then display_all_contacts
       when 5 then search_by_attribute
+      when 6 then @active = false
     end
 
   end
@@ -58,7 +60,7 @@ class CRM < Contact
 
   def modify_existing_contact
     puts "Input contact to modify(by ID)"
-    targetid = gets.chomp.to_i
+    targetid = gets.chomp
     puts targetid
     puts "Input value to modify"
     target_catagory = gets.chomp
@@ -72,7 +74,7 @@ class CRM < Contact
 
   def delete_contact
     puts "Input target for deletion"
-    targetid = gets.chomp.to_i
+    targetid = gets.chomp
     Contact.find(targetid).deleter
 
   end
@@ -87,13 +89,17 @@ class CRM < Contact
     target = gets.chomp
     puts "Input value"
     query = gets.chomp
+    output = Contact.find_by(target, query)
+    puts output.inspect
 
+  end
 
-
+  def reactivate
+    @active = true
   end
 
 
 end
 
-x = CRM.new
-x.main_menu
+crm = CRM.new
+crm.main_menu

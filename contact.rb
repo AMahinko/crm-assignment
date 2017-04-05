@@ -6,7 +6,7 @@ class Contact
   # This method should initialize the contact's attributes
   def initialize(first_name, last_name, email, note)
 
-    @id = @@id
+    @id = @@id.to_s
     @@id += 1
     @first_name = first_name.to_s
     @last_name = last_name.to_s
