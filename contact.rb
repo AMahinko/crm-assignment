@@ -37,9 +37,7 @@ class Contact
   # This method should accept an id as an argument
   # and return the contact who has that id
   def self.find(query)
-    puts query
     query = query.to_s
-    puts query
     Contact.all.each do |contact|
       return contact if contact.id == query
     end
@@ -142,12 +140,12 @@ class Contact
   end
 
   def self.delete_all
-    id_counter = 0
-    # while Contact.all[0] != nil do
+    id_counter = 1
+    while Contact.all[0] != nil do
       target = Contact.find(id_counter)
-      puts target
-      # target.deleter
-    # end
+      target.deleter
+      id_counter += 1
+    end
   end
 
   # Feel free to add other methods here, if you need them.
